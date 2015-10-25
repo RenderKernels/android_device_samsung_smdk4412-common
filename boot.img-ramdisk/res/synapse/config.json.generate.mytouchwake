@@ -1,0 +1,43 @@
+#!/sbin/busybox sh
+
+cat << CTAG
+{
+    name:"Touchwake / Slide2Wake",
+    elements:[
+    	{ SDescription:{
+		description:"\n\tSettings pertaining to Touchwake, Timeout and Slide2Wake\n\n\tTouchwake gives your device a grace period after the screen times out, during which a touch (or only a swipe if so desired) will wake it. Optionally, persistent mode can extend this functionality by holding a wakelock - making it so your screen will always wake from a touch/swipe even when turned off normally (not timed out).\n"
+        }},
+        { SCheckBox:{
+			label:"Enable Touchwake/DoubleTap2Wake",
+			description:"\tEnables the Touchwake and Double Tap engine.\n\n\tNote: For D2TW to work this must be on and timout must be set to 0. DT2W and S2W CANNOT be used together.\nDefault: Off\n",
+			default:0,
+	        action:"generic /sys/devices/virtual/misc/touchwake/enabled"
+		}},
+        { SPane:{
+		title:"Touchwake General Settings",
+		description:"",
+        }},
+		{ SSeekBar:{
+       		title:"Grace Period After Screen Times Out",
+			description:"\tSet the grace period in seconds that Touchwake will remain active after the screen times out.\n",
+			default:10000,
+			max:60000,
+			min:0,
+			step:1000,
+			weight:0.001,
+			unit:" seconds",
+			action:"generic /sys/devices/virtual/misc/touchwake/delay",
+		}},
+		{ SSpacer:{
+		   height:1
+		}},
+		{ SCheckBox:{
+			label:"Slide2Wake",
+			description:"\tEnable this WITH touchwake. This will allow waking the device by sliding your finger from left to right while the device is asleep.\n",
+			default:0,
+	        action:"generic /sys/devices/virtual/misc/touchwake/s2w"
+		}},
+    ]
+}
+
+CTAG
