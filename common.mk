@@ -9,10 +9,4 @@ BOARD_KERNEL_PAGESIZE := $(shell cat device/samsung/smdk4412-common/boot.img-pag
 BOARD_KERNEL_CMDLINE := $(shell cat device/samsung/smdk4412-common/boot.img-cmdline)
 BOARD_RAMDISK_DIR := device/samsung/smdk4412-common/boot.img-ramdisk
 
-.PHONY: buildzip
-buildzip: buildbootimg
-		$(mv-modules)
-		$(clear_boot-ramdisk)
-		$(build-zip)
-
 include vendor/render/configs/common.mk
