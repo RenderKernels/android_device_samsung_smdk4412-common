@@ -3,6 +3,5 @@ CROSS_COMPILE := $(ANDROID_BUILD_TOP)/toolchains/arm-cortex_a9-linux-gnueabihf-l
 ARCH := arm
 ZIMAGE := arch/arm/boot/zImage
 ZIP_FILES_DIR := device/samsung/smdk4412-common/zip_files_dir
-TARGET_REQUIRES_DTB := true
 
 include vendor/render/configs/common.mk
